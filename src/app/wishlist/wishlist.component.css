@@ -1,0 +1,184 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+
+html,
+html a {
+	-webkit-font-smoothing: antialiased;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+body {
+	background-color: #fff;
+	color: #666;
+	font-family: "Open Sans", sans-serif;
+	font-size: 62.5%;
+	margin: 0 auto;
+}
+
+a {
+	border: 0 none;
+	outline: 0;
+	text-decoration: none;
+}
+
+strong {
+	font-weight: bold;
+}
+
+p {
+	margin: 0.75rem 0 0;
+}
+
+h2 {
+	font-size: 1.25rem;
+	font-weight: normal;
+	margin-top: 20px;
+	padding: 0;
+}
+
+input,
+button {
+	border: 0 none;
+	outline: 0 none;
+}
+
+button {
+	background-color: #666;
+	color: #fff;
+}
+
+button:hover,
+button:focus {
+	background-color: #555;
+}
+
+img,
+.basket-module,
+.basket-labels,
+.basket-product {
+	width: 100%;
+}
+
+input,
+button,
+.basket,
+.basket-module,
+.basket-labels,
+.item,
+.price,
+.quantity,
+.subtotal,
+.basket-product,
+.product-image,
+.product-details {
+	float: left;
+}
+
+.hide {
+	display: none;
+}
+
+main {
+	clear: both;
+	font-size: 0.85rem;
+	margin: 0 auto;
+	overflow: hidden;
+
+	width: 960px;
+}
+
+.label {
+	display: block;
+	margin-bottom: 0.3125rem;
+}
+
+.basket-labels {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin-top: 1.625rem;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	color: #111;
+	display: inline-block;
+	padding: 0.625rem 0;
+}
+
+.item {
+	width: 55%;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.price {
+	font-size: 1.25rem;
+	width: 35%;
+	margin-left: 70px;
+	margin-top: 15px;
+}
+.pricehead {
+	font-weight: bold;
+	font-size: 1.5rem;
+	width: 35%;
+	margin-left: 70px;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 35px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.remove {
+	margin-right: 50px;
+	float: right;
+	position: absolute;
+	right: 0;
+	text-align: right;
+	width: 45%;
+	margin-top: 15px;
+}
+
+.remove button {
+	background-color: transparent;
+	color: red;
+	float: none;
+	font-size: 1.25rem;
+	text-decoration: underline;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.item-heading {
+	padding-left: 4.375rem;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.basket-product {
+	border-bottom: 1px solid #ccc;
+	padding: 1rem 0;
+	position: relative;
+}
+
+.product-image {
+	width: 35%;
+}
+
+.product-details {
+	width: 65%;
+}
+
+.product-details {
+	padding: 0 1.5rem;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
