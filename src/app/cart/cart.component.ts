@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { ApiService } from "../apiservices.service";
 
 @Component({
@@ -9,18 +10,19 @@ import { ApiService } from "../apiservices.service";
 export class CartComponent implements OnInit {
 	products: any;
 	total: number = 0;
-	user = {
-		id: "",
+	forCartData = {
+		userId: "",
+		productId: "",
 	};
 
-	constructor(private api: ApiService) {}
+	constructor(private api: ApiService, private router: Router) {}
 
 	ngOnInit(): void {
 		if (true) {
 			//sessionStorage.getItem("id") != null
 			// this.id = sessionStorage.getItem("id") || "";
-			this.user.id = "616fb92c9f2229cdddbf50ad";
-			this.api.cartItems(this.user).subscribe((res) => {
+			this.forCartData.userId = "616fb92c9f2229cdddbf50ad";
+			this.api.cartItems(this.forCartData).subscribe((res) => {
 				this.products = res.items;
 				this.total = res.tot;
 			});
@@ -29,6 +31,21 @@ export class CartComponent implements OnInit {
 		}
 	}
 
-	addItem(id: string) {}
-	removeItem(id: string) {}
+	addItem(id: string) {
+		this.forCartData.productId = id;
+		this.api.addProductToCart(this.forCartData);
+		this.router.navigate(["/cart"]);
+	}
+
+	removeItem(id: string) {
+		this.forCartData.productId = id;
+		this.api.removeProductFromCart(this.forCartData);
+		this.router.navigate(["/cart"]);
+	}
+
+	removeProd(id: string) {
+		this.forCartData.productId = id;
+		this.api.removeProductCart(this.forCartData);
+		this.router.navigate(["/cart"]);
+	}
 }

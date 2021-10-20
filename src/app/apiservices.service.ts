@@ -30,6 +30,14 @@ export class ApiService {
 		return this._http.post(this.apiurl + "/addToCart", data);
 	}
 
+	removeProductFromCart(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/removeFromCart", data);
+	}
+
+	removeProductCart(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/removeProductCart", data);
+	}
+
 	cartItems(data: any): Observable<any> {
 		return this._http.post(this.apiurl + "/cart", data);
 	}

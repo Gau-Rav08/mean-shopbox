@@ -117,7 +117,19 @@ app.post("/api/removeFromCart", async (req, res) => {
 	for (let i = 0; i < cart.length; i++) {
 		if (cart[i].productId == prodId) {
 			cart[i].quantity--;
-			exist = true;
+			await userModel.findByIdAndUpdate(userId, { cart: cart });
+		}
+	}
+});
+
+app.post("/api/removeProductCart", async (req, res) => {
+	let prodId = req.body.productId;
+	let userId = req.body.userId;
+	let user = await userModel.findById(userId);
+	let cart = user.cart;
+	for (let i = 0; i < cart.length; i++) {
+		if (cart[i].productId == prodId) {
+			cart.splice(i, 1);
 			await userModel.findByIdAndUpdate(userId, { cart: cart });
 		}
 	}
@@ -125,7 +137,7 @@ app.post("/api/removeFromCart", async (req, res) => {
 
 app.post("/api/cart", async (req, res) => {
 	try {
-		let userId = req.body.id;
+		let userId = req.body.userId;
 		const user = await userModel.findById(userId);
 		let cart = user.cart;
 		let cartItems = [];
