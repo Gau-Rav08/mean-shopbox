@@ -6,6 +6,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const cors = require("cors");
 
 const userModel = require("./model/user");
+const productModel = require("./model/product");
 
 const app = express();
 
@@ -26,14 +27,46 @@ app.post("/api/signup", (req, res) => {
 		email: req.body.email,
 		password: req.body.password,
 	});
-	user.save();
+	userModel.findOne({ email: req.body.email }, (err, existingUser) => {
+		if (existingUser) {
+			res.json({
+				success: false,
+				message: "Account with that email is already exists",
+			});
+		} else {
+			user.save();
+			res.json({ success: true });
+		}
+	});
 });
 
-app.get("/api/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
 	var data = await userModel.findOne({
 		$and: [{ email: req.body.email }, { password: req.body.password }],
 	});
-	res.send(data);
+	if (data) {
+		res.json({ success: true, user: data });
+	} else {
+		res.json({ success: false, message: "Incorrect Email or Password." });
+	}
+});
+
+app.get("/api/product", async (req, res) => {
+	try {
+		let productId = req.body.id;
+		const product = await productModel.findById({ _id: productId });
+		if (product) {
+			res.json(product);
+		} else {
+			res.status(404).json({
+				message: "No product found",
+			});
+		}
+	} catch (err) {
+		res.status(400).json({
+			message: "Failed to get product details",
+		});
+	}
 });
 
 // app.get("/polls", async (req, res) => {
