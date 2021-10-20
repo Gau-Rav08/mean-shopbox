@@ -2,16 +2,41 @@
 	<div class="overlay-container">
 		<h1>Welcome Back!</h1>
 		<p>To keep connected with us please login with your account</p>
-		<button class="ghost" routerLink="../login">LOGIN</button>
+		<button class="ghost" routerLink="/login">LOGIN</button>
 	</div>
 	<div class="form-container">
-		<form action="#">
+		<form
+			#SignupForm="ngForm"
+			ngNativeValidate
+			(submit)="onSignup(SignupForm.value)"
+		>
 			<h1>Create Account</h1>
-			<input type="text" placeholder="Name" required />
-			<input type="email" placeholder="Email" required />
-			<input type="password" placeholder="Password" required />
-			<input type="password" placeholder="Confirm Password" required />
-			<button>SIGN UP</button>
+			<input
+				type="text"
+				ngModel
+				placeholder="Name"
+				name="name"
+				required
+				minlength="4"
+			/>
+			<input type="email" ngModel placeholder="Email" name="email" required />
+			<input
+				type="password"
+				ngModel
+				placeholder="Password"
+				name="password"
+				required
+				minlength="8"
+			/>
+			<input
+				type="password"
+				ngModel
+				placeholder="Confirm Password"
+				name="confirmPassword"
+				required
+				minlength="8"
+			/>
+			<button type="submit">SIGN UP</button>
 		</form>
 	</div>
 </div>
