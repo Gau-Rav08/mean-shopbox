@@ -1,62 +1,50 @@
 <h5>My Cart</h5>
-    <div class="basket">
-        
-        <div class="basket-labels">
-          <ul>
-            <li class="item item-heading">Item</li>
-            <li class="price">Price</li>
-            <li class="quantity qnty_title" >Quantity</li>
-            <li class="subtotal">Subtotal</li>
-          </ul>
-        </div>
-        <div class="basket-product">
-          <div class="item">
-            <div class="product-image">
-              <img src="../../assets/a1.jpg" alt="iphone" class="product-frame">
-            </div>
-            <div class="product-details">
-              <h1>Apple iPhone 13 (64 GB)</h1>
-              
-            </div>
-          </div>
-          <div class="price price_content">&#8377; 89,999</div>
-          <div class="quantity">
-            
-                <button class="_btn minus radius" ></button>
-                <input class="_column product-qty">
-                <button class="_btn plus radius"></button>
-            
-          </div>
-          <div class="subtotal price_content">&#8377; 89,999</div>
-          <div class="remove">
-            <button>Remove</button>
-          </div>
-        </div>
-        
-        <div class="basket-product">
-            
-            <div class="checkout">
+<div class="basket">
+	<div class="basket-labels">
+		<ul>
+			<li class="item item-heading">Item</li>
+			<li class="price">Price</li>
+			<li class="quantity qnty_title">Quantity</li>
+			<li class="subtotal">Subtotal</li>
+		</ul>
+	</div>
+	<div *ngFor="let product of products" class="basket-product">
+		<div class="item">
+			<div class="product-image">
+				<img src="{{ product[0].image }}" alt="iphone" class="product-frame" />
+			</div>
+			<div class="product-details">
+				<h1>{{ product[0].name }}</h1>
+			</div>
+		</div>
+		<div class="price price_content">&#8377;{{ product[0].price }}</div>
+		<div class="quantity">
+			<button
+				class="_btn minus radius"
+				(click)="removeItem(product[0].id)"
+			></button>
+			<input class="_column product-qty" value="{{ product[1] }}" />
+			<button
+				class="_btn plus radius"
+				(click)="addItem(product[0].id)"
+			></button>
+		</div>
+		<div class="subtotal price_content">
+			&#8377;{{ product[2].toLocaleString() }}
+		</div>
+		<div class="remove">
+			<button>Remove</button>
+		</div>
+	</div>
 
-                <button class="shopmore_btn btn:hover">Shop More</button>
-                <button class="checkout_btn btn:hover">Checkout</button>
-            </div>
-            <div class="grandtotal">
-                GrandTotal:&#8377;89,999
-            </div>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
+	<div class="basket-product">
+		<div class="checkout">
+			<button class="shopmore_btn btn:hover">Shop More</button>
+			<button class="checkout_btn btn:hover">Checkout</button>
+		</div>
+		<div class="grandtotal">Total:&#8377;{{ total.toLocaleString() }}</div>
+	</div>
+</div>
 
 <!-- 
     <ng-container >

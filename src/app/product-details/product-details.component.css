@@ -41,7 +41,7 @@ p {
 }
 
 h2 {
-	font-size: 35px;
+	font-size: 38px;
 	color: #555;
 	margin-bottom: 20px;
 }
@@ -60,6 +60,7 @@ h2 {
 }
 
 .price {
+	margin-top: 10px;
 	color: rgb(29, 28, 28);
 	font-size: 26px;
 	font-weight: bold;

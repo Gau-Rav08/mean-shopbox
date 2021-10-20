@@ -51,10 +51,10 @@ app.post("/api/login", async (req, res) => {
 	}
 });
 
-app.get("/api/product", async (req, res) => {
+app.get("/api/product/:id", async (req, res) => {
 	try {
-		let productId = req.body.id;
-		const product = await productModel.findById({ _id: productId });
+		let productId = req.params.id;
+		const product = await productModel.findById(productId);
 		if (product) {
 			res.json(product);
 		} else {
@@ -65,6 +65,80 @@ app.get("/api/product", async (req, res) => {
 	} catch (err) {
 		res.status(400).json({
 			message: "Failed to get product details",
+		});
+	}
+});
+
+app.get("/api/newproducts", async (req, res) => {
+	try {
+		const product = await productModel
+			.find()
+			.limit(8)
+			.sort({ releasedDate: -1 });
+		if (product) {
+			res.json(product);
+		} else {
+			res.status(404).json({
+				message: "No product found",
+			});
+		}
+	} catch (err) {
+		res.status(400).json({
+			message: "Something went wrong",
+		});
+	}
+});
+
+app.post("/api/addToCart", async (req, res) => {
+	let prodId = req.body.productId;
+	let userId = req.body.userId;
+	let user = await userModel.findById(userId);
+	let cart = user.cart;
+	let exist = false;
+	for (let i = 0; i < cart.length; i++) {
+		if (cart[i].productId == prodId) {
+			cart[i].quantity++;
+			exist = true;
+			await userModel.findByIdAndUpdate(userId, { cart: cart });
+		}
+	}
+	if (!exist) {
+		await userModel.findByIdAndUpdate(userId, {
+			cart: [...cart, { productId: prodId }],
+		});
+	}
+});
+
+app.post("/api/removeFromCart", async (req, res) => {
+	let prodId = req.body.productId;
+	let userId = req.body.userId;
+	let user = await userModel.findById(userId);
+	let cart = user.cart;
+	for (let i = 0; i < cart.length; i++) {
+		if (cart[i].productId == prodId) {
+			cart[i].quantity--;
+			exist = true;
+			await userModel.findByIdAndUpdate(userId, { cart: cart });
+		}
+	}
+});
+
+app.post("/api/cart", async (req, res) => {
+	try {
+		let userId = req.body.id;
+		const user = await userModel.findById(userId);
+		let cart = user.cart;
+		let cartItems = [];
+		let total = 0;
+		for (let i = 0; i < cart.length; i++) {
+			let items = await productModel.findById(cart[i].productId);
+			cartItems.push([items, cart[i].quantity, items.price * cart[i].quantity]);
+			total += items.price * cart[i].quantity;
+		}
+		res.json({ items: cartItems, tot: total });
+	} catch (err) {
+		res.status(400).json({
+			message: "Failed to get cart details",
 		});
 	}
 });

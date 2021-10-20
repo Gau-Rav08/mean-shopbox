@@ -17,4 +17,20 @@ export class ApiService {
 	userSignup(data: any): Observable<any> {
 		return this._http.post(this.apiurl + "/signup", data);
 	}
+
+	newProducts(): Observable<any> {
+		return this._http.get(this.apiurl + "/newproducts");
+	}
+
+	getProduct(data: any): Observable<any> {
+		return this._http.get(this.apiurl + "/product/" + data);
+	}
+
+	addProductToCart(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/addToCart", data);
+	}
+
+	cartItems(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/cart", data);
+	}
 }

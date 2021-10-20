@@ -7,46 +7,34 @@
 		<div class="product-box">
 			<div class="all-images">
 				<div class="main-images">
-					<img src="../../assets/a1.jpg" id="imagebox" />
+					<img src="{{ product.image }}" id="imagebox" />
 				</div>
 			</div>
 		</div>
 
 		<div class="text">
 			<div class="content">
-				<p class="brand">Brand : Apple</p>
-				<h2>Apple iPhone 13 (64 GB)</h2>
-				<p>
-					64 GB ROM | 15.49 cm (6.1 inch) Super Retina XDR Display | 12MP + 12MP
-					| 12MP Front Camera |A14 Bionic Chip with Next Generation Neural
-					Engine Processor | Ceramic Shield | Industry-leading IP68 Water
-					Resistance | All Screen OLED Display | 12MP TrueDepth Front Camera
-					with Night Mode, 4K Dolby Vision HDR Recording
-				</p>
-				<div class="review">
-					<span>4.6 </span>
-					<span class="fa fa-star"></span>
-				</div>
+				<p class="brand">Brand : {{ product.brand }}</p>
+				<h2>
+					{{ product.name }}
+				</h2>
+				<ul>
+					<li>{{ product.ram }} GB Ram | {{ product.ram }} GB ROM</li>
+					<li>{{ product.screen }} Display</li>
+					<li>{{ product.camera }}</li>
+					<li>{{ product.battery }} mAh Battery</li>
+					<li>{{ product.processor }}</li>
+				</ul>
 				<div class="price-box">
-					<p class="price">&#8377; 89,999</p>
-					<del> &#8377; 99,999</del>
+					<p class="price">&#8377;{{ product.price.toLocaleString() }}</p>
 				</div>
-				<p>
-					Color :
-					<select name="color">
-						<option value="black">black</option>
-						<option value="blue">blue</option>
-						<option value="pink">pink</option>
-						<option value="white">white</option>
-					</select>
-				</p>
-
-				<p>Quantity <input type="text" value="1" /></p>
-				<button>
+				<button (click)="addToCart()">
 					<span class="fa fa-shopping-cart"></span>
 					Add to Cart
 				</button>
 				<button class="buy">Buy Now</button>
+
+				<p style="margin-top: 30px">{{ product.description }}</p>
 			</div>
 		</div>
 	</div>

@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
 	onLogin(user: any) {
 		this.api.loginUser(user).subscribe((res) => {
 			if (res.success) {
+				sessionStorage.setItem("id", res.user.id);
+				sessionStorage.setItem("name", res.user.name);
+				sessionStorage.setItem("email", res.user.email);
+				sessionStorage.setItem("pass", res.user.password);
 				this.router.navigate([""]);
 			} else {
 				alert(res.message);
