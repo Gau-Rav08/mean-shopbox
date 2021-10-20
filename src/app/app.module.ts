@@ -15,6 +15,7 @@ import { FilterComponent } from './filter/filter.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ApiService } from "./apiservices.service";
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ApiService } from "./apiservices.service";
     CartComponent,
     FilterComponent,
     OrdersComponent,
-    ProfileComponent
+    ProfileComponent,
+    NavbarComponent
   ],
   imports:  [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [ApiService],
