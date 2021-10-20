@@ -4,6 +4,7 @@ import { CartComponent } from "./cart/cart.component";
 import { FilterComponent } from "./filter/filter.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 import { OrdersComponent } from "./orders/orders.component";
 import { ProductDetailsComponent } from "./product-details/product-details.component";
 import { ProfileComponent } from "./profile/profile.component";
@@ -19,6 +20,7 @@ const routes: Routes = [
 	{ path: "filter", component: FilterComponent },
 	{ path: "product/:Id", component: ProductDetailsComponent },
 	{ path: "orders", component: OrdersComponent },
+	{ path: "navbar", component: NavbarComponent },
 	{ path: "profile", component: ProfileComponent },
 ];
 
