@@ -10,6 +10,24 @@ export class ApiService {
 
 	readonly apiurl = "http://localhost:3000/api";
 
+	user = {
+		userId: "",
+		userName: "",
+		userExists: false,
+	};
+
+	async getProfile() {
+		try {
+			if (sessionStorage.getItem("id")) {
+				this.user.userId = sessionStorage.getItem("id") || "";
+				this.user.userName = sessionStorage.getItem("name") || "";
+				this.user.userExists = true;
+			}
+		} catch (e) {
+			console.log(e);
+		}
+	}
+
 	loginUser(data: any): Observable<any> {
 		return this._http.post(this.apiurl + "/login", data);
 	}
@@ -23,7 +41,7 @@ export class ApiService {
 	}
 
 	getProduct(data: any): Observable<any> {
-		return this._http.get(this.apiurl + "/product/" + data);
+		return this._http.post(this.apiurl + "/product", data);
 	}
 
 	addProductToCart(data: any): Observable<any> {
@@ -40,5 +58,21 @@ export class ApiService {
 
 	cartItems(data: any): Observable<any> {
 		return this._http.post(this.apiurl + "/cart", data);
+	}
+
+	wishItems(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/wishlist", data);
+	}
+
+	addProductToWish(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/addToWish", data);
+	}
+
+	removeProductWish(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/removeProductWish", data);
+	}
+
+	checkInWish(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/checkWish", data);
 	}
 }

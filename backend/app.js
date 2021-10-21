@@ -51,21 +51,15 @@ app.post("/api/login", async (req, res) => {
 	}
 });
 
-app.get("/api/product/:id", async (req, res) => {
+app.post("/api/product", async (req, res) => {
 	try {
-		let productId = req.params.id;
+		let productId = req.body.productId;
 		const product = await productModel.findById(productId);
 		if (product) {
 			res.json(product);
-		} else {
-			res.status(404).json({
-				message: "No product found",
-			});
 		}
 	} catch (err) {
-		res.status(400).json({
-			message: "Failed to get product details",
-		});
+		console.log(err);
 	}
 });
 
@@ -155,6 +149,72 @@ app.post("/api/cart", async (req, res) => {
 	}
 });
 
+app.post("/api/wishlist", async (req, res) => {
+	try {
+		let userId = req.body.userId;
+		const user = await userModel.findById(userId);
+		let wish = user.wishlist;
+		let wishItems = [];
+		for (let i = 0; i < wish.length; i++) {
+			let items = await productModel.findById(wish[i].productId);
+			wishItems.push(items);
+		}
+		res.json(wishItems);
+	} catch (err) {
+		res.status(400).json({
+			message: "Failed to get wishlist details",
+		});
+	}
+});
+
+app.post("/api/checkWish", async (req, res) => {
+	let prodId = req.body.productId;
+	let userId = req.body.userId;
+	let user = await userModel.findById(userId);
+	let wish = user.wishlist;
+	let exist = false;
+	for (let i = 0; i < wish.length; i++) {
+		if (wish[i].productId == prodId) {
+			exist = true;
+		}
+	}
+	if (exist) {
+		res.json({ check: true });
+	} else {
+		res.json({ check: false });
+	}
+});
+
+app.post("/api/addToWish", async (req, res) => {
+	let prodId = req.body.productId;
+	let userId = req.body.userId;
+	let user = await userModel.findById(userId);
+	let wish = user.wishlist;
+	let exist = false;
+	for (let i = 0; i < wish.length; i++) {
+		if (wish[i].productId == prodId) {
+			exist = true;
+		}
+	}
+	if (!exist) {
+		await userModel.findByIdAndUpdate(userId, {
+			wishlist: [...wish, { productId: prodId }],
+		});
+	}
+});
+
+app.post("/api/removeProductWish", async (req, res) => {
+	let prodId = req.body.productId;
+	let userId = req.body.userId;
+	let user = await userModel.findById(userId);
+	let wish = user.wishlist;
+	for (let i = 0; i < wish.length; i++) {
+		if (wish[i].productId == prodId) {
+			wish.splice(i, 1);
+			await userModel.findByIdAndUpdate(userId, { wishlist: wish });
+		}
+	}
+});
 // app.get("/polls", async (req, res) => {
 // 	let data = await poll
 // 		.find(

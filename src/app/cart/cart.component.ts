@@ -18,16 +18,15 @@ export class CartComponent implements OnInit {
 	constructor(private api: ApiService, private router: Router) {}
 
 	ngOnInit(): void {
-		if (true) {
-			//sessionStorage.getItem("id") != null
-			// this.id = sessionStorage.getItem("id") || "";
-			this.forCartData.userId = "616fb92c9f2229cdddbf50ad";
+		if (sessionStorage.getItem("id")) {
+			this.forCartData.userId = sessionStorage.getItem("id") || "";
 			this.api.cartItems(this.forCartData).subscribe((res) => {
 				this.products = res.items;
 				this.total = res.tot;
 			});
 		} else {
 			alert("You need to be logged in.");
+			this.router.navigate(["/"]);
 		}
 	}
 

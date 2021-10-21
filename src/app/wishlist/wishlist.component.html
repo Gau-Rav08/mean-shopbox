@@ -6,38 +6,46 @@
 			<li class="pricehead">Price</li>
 		</ul>
 	</div>
-	<div class="basket-product">
+	<div *ngFor="let product of products" class="basket-product">
 		<div class="item">
 			<div class="product-image">
-				<img src="../../assets/a1.jpg" alt="iphone" class="product-frame" />
+				<img src="{{ product.image }}" alt="image" class="product-frame" />
 			</div>
 			<div class="product-details">
-				<h2><strong>Apple iPhone 13 (64 GB)</strong></h2>
+				<h2>
+					<strong
+						><a class="a-title" routerLink="/product/{{ product.id }}">{{
+							product.name
+						}}</a></strong
+					>
+				</h2>
 			</div>
 		</div>
-		<div class="price">&#8377;89,999</div>
+		<div class="price">&#8377;{{ product.price.toLocaleString() }}</div>
 
 		<div class="remove">
-			<button>Remove</button>
+			<button (click)="removeProd(product.id)">Remove</button>
 		</div>
 	</div>
-	<div class="basket-product">
+	<div *ngFor="let product of products" class="basket-product">
 		<div class="item">
 			<div class="product-image">
-				<img
-					src="../../assets/a2.jpg"
-					alt="Placholder Image 2"
-					class="product-frame"
-				/>
+				<img src="{{ product.image }}" alt="image" class="product-frame" />
 			</div>
 			<div class="product-details">
-				<h2><strong>Apple iPhone 13 (64 GB)</strong></h2>
+				<h2>
+					<strong
+						><a class="a-title" routerLink="/product/{{ product.id }}">{{
+							product.name
+						}}</a></strong
+					>
+				</h2>
 			</div>
 		</div>
-		<div class="price">&#8377;89,999</div>
+		<div class="price">&#8377;{{ product.price.toLocaleString() }}</div>
 
 		<div class="remove">
-			<button>Remove</button>
+			<button (click)="removeProd(product.id)">Remove</button>
 		</div>
 	</div>
 </main>

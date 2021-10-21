@@ -1,2 +1,38 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<nav>
+	<div class="navigation">
+		<h3 class="app-h3" (click)="goHome()">SHOPBOX</h3>
+
+		<ul class="nav-ul menu">
+			<input type="text" placeholder="Search.." />
+			<button type="submit"><i class="fa fa-search"></i></button>
+		</ul>
+
+		<div *ngIf="api.user.userExists; else templateName">
+			<div class="right-menu">
+				<a class="nav-a user" routerLink="/profile">
+					<i class="far fa-user"> {{ api.user.userName }}</i>
+				</a>
+				<a class="nav-a" routerLink="/wishlist"><i class="fas fa-heart"></i></a>
+				<a class="nav-a" routerLink="/cart">
+					<i class="fas fa-shopping-cart"> </i>
+				</a>
+				<a class="nav-a logout-btn" (click)="logout()">Logout</a>
+			</div>
+		</div>
+
+		<ng-template #templateName>
+			<div class="right-menu">
+				<a class="nav-a logout-btn" routerLink="/login">Login</a>
+
+				<a class="nav-a" (click)="needToLogin()"
+					><i class="fas fa-heart"></i
+				></a>
+				<a class="nav-a" (click)="needToLogin()">
+					<i class="fas fa-shopping-cart"> </i>
+				</a>
+			</div>
+		</ng-template>
+	</div>
+</nav>
 <router-outlet></router-outlet>

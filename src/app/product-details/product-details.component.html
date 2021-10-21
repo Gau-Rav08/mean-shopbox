@@ -2,12 +2,12 @@
 	rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 />
-<div class="container">
+<div *ngIf="product" class="container">
 	<div class="wrapper">
 		<div class="product-box">
 			<div class="all-images">
 				<div class="main-images">
-					<img src="{{ product.image }}" id="imagebox" />
+					<img src="{{ product.image }}" alt="image" id="imagebox" />
 				</div>
 			</div>
 		</div>
@@ -28,11 +28,25 @@
 				<div class="price-box">
 					<p class="price">&#8377;{{ product.price.toLocaleString() }}</p>
 				</div>
-				<button (click)="addToCart()">
-					<span class="fa fa-shopping-cart"></span>
+				<button *ngIf="!addedToCart" (click)="addToCart()">
+					<i class="fa fa-shopping-cart"></i>
 					Add to Cart
 				</button>
-				<button class="buy">Buy Now</button>
+				<button *ngIf="addedToCart" routerLink="/cart">
+					<i class="fa fa-shopping-cart"></i>
+					Add to Cart
+				</button>
+				<button *ngIf="!addedToWish" class="buy" (click)="addToWish()">
+					<span class="fa fa-heart"></span> Add to Wishlist
+				</button>
+				<button
+					*ngIf="addedToWish"
+					style="width: 230px"
+					class="buy"
+					(click)="removeFromWish()"
+				>
+					<i class="fa fa-heart"></i> Remove from Wishlist
+				</button>
 
 				<p style="margin-top: 30px">{{ product.description }}</p>
 			</div>

@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema(
 				quantity: { type: Number, default: 1 },
 			},
 		],
+		wishlist: [
+			{
+				productId: { type: String },
+			},
+		],
 	},
 	{ collection: "users" }
 );
