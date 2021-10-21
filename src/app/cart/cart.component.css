@@ -189,7 +189,7 @@ li {
 }
 
 .product-image {
-	width: 35%;
+	width: 25%;
 }
 
 .product-details {
@@ -198,6 +198,8 @@ li {
 
 .product-frame {
 	border: 1px solid #aaa;
+	width: 150px;
+	height: 160px;
 }
 
 .product-details {
@@ -320,8 +322,8 @@ aside {
 	text-align: center;
 	vertical-align: top;
 	white-space: nowrap;
-	width: 10%;
-
+	width: 100px;
+	padding: 2px 5px 3px 5px;
 	border: 0;
 }
 
