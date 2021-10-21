@@ -30,21 +30,28 @@ export class CartComponent implements OnInit {
 		}
 	}
 
+	reloadCurrentRoute() {
+		let currentUrl = this.router.url;
+		this.router.navigateByUrl("/", { skipLocationChange: true }).then(() => {
+			this.router.navigate([currentUrl]);
+		});
+	}
+
 	addItem(id: string) {
 		this.forCartData.productId = id;
 		this.api.addProductToCart(this.forCartData).subscribe();
-		this.router.navigate(["/cart"]);
+		this.reloadCurrentRoute();
 	}
 
 	removeItem(id: string) {
 		this.forCartData.productId = id;
 		this.api.removeProductFromCart(this.forCartData).subscribe();
-		this.router.navigate(["/cart"]);
+		this.reloadCurrentRoute();
 	}
 
 	removeProd(id: string) {
 		this.forCartData.productId = id;
 		this.api.removeProductCart(this.forCartData).subscribe();
-		this.router.navigate(["/cart"]);
+		this.reloadCurrentRoute();
 	}
 }

@@ -16,7 +16,7 @@ const routes: Routes = [
 	{ path: "signup", component: SignupComponent },
 	{ path: "wishlist", component: WishlistComponent },
 	{ path: "cart", component: CartComponent },
-	{ path: "filter", component: FilterComponent },
+	{ path: "filter/:brand", component: FilterComponent },
 	{ path: "product/:Id", component: ProductDetailsComponent },
 	{ path: "orders", component: OrdersComponent },
 	{ path: "profile", component: ProfileComponent },

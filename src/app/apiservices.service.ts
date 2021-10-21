@@ -75,4 +75,8 @@ export class ApiService {
 	checkInWish(data: any): Observable<any> {
 		return this._http.post(this.apiurl + "/checkWish", data);
 	}
+
+	getFilterProduct(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/filter", data);
+	}
 }

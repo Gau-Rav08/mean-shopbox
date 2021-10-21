@@ -30,7 +30,10 @@ export class WishlistComponent implements OnInit {
 
 	removeProd(id: string) {
 		this.forWishData.productId = id;
-		this.api.removeProductWish(this.forWishData);
-		this.router.navigate(["/wishlist"]);
+		this.api.removeProductWish(this.forWishData).subscribe();
+		let currentUrl = this.router.url;
+		this.router.navigateByUrl("/", { skipLocationChange: true }).then(() => {
+			this.router.navigate([currentUrl]);
+		});
 	}
 }

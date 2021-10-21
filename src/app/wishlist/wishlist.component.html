@@ -1,31 +1,10 @@
 <h1>My Wishlist</h1>
 <main>
-	<div class="basket-labels">
+	<div *ngIf="products" class="basket-labels">
 		<ul>
 			<li class="item item-heading">Item</li>
 			<li class="pricehead">Price</li>
 		</ul>
-	</div>
-	<div *ngFor="let product of products" class="basket-product">
-		<div class="item">
-			<div class="product-image">
-				<img src="{{ product.image }}" alt="image" class="product-frame" />
-			</div>
-			<div class="product-details">
-				<h2>
-					<strong
-						><a class="a-title" routerLink="/product/{{ product.id }}">{{
-							product.name
-						}}</a></strong
-					>
-				</h2>
-			</div>
-		</div>
-		<div class="price">&#8377;{{ product.price.toLocaleString() }}</div>
-
-		<div class="remove">
-			<button (click)="removeProd(product.id)">Remove</button>
-		</div>
 	</div>
 	<div *ngFor="let product of products" class="basket-product">
 		<div class="item">

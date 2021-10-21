@@ -138,8 +138,9 @@ app.post("/api/cart", async (req, res) => {
 		let total = 0;
 		for (let i = 0; i < cart.length; i++) {
 			let items = await productModel.findById(cart[i].productId);
-			cartItems.push([items, cart[i].quantity, items.price * cart[i].quantity]);
-			total += items.price * cart[i].quantity;
+			subtotal = items.price * cart[i].quantity;
+			cartItems.push([items, cart[i].quantity, subtotal]);
+			total += subtotal;
 		}
 		res.json({ items: cartItems, tot: total });
 	} catch (err) {
@@ -215,6 +216,28 @@ app.post("/api/removeProductWish", async (req, res) => {
 		}
 	}
 });
+
+app.post("/api/filter", async (req, res) => {
+	let brand = req.body.brand || "";
+	try {
+		const product = await productModel
+			.find({ brand: brand })
+			.limit(10)
+			.sort({ releasedDate: -1 });
+		if (product) {
+			res.json(product);
+		} else {
+			res.status(404).json({
+				message: "No product found",
+			});
+		}
+	} catch (err) {
+		res.status(400).json({
+			message: "Something went wrong",
+		});
+	}
+});
+
 // app.get("/polls", async (req, res) => {
 // 	let data = await poll
 // 		.find(

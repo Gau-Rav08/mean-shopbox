@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import { ApiService } from "../apiservices.service";
 
 @Component({
@@ -8,7 +7,7 @@ import { ApiService } from "../apiservices.service";
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-	constructor(private api: ApiService, private router: Router) {}
+	constructor(private api: ApiService) {}
 
 	products: any;
 
