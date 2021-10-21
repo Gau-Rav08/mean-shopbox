@@ -12,7 +12,6 @@ import { WishlistComponent } from "./wishlist/wishlist.component";
 import { ProductDetailsComponent } from "./product-details/product-details.component";
 import { CartComponent } from "./cart/cart.component";
 import { FilterComponent } from "./filter/filter.component";
-import { OrdersComponent } from "./orders/orders.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { ApiService } from "./apiservices.service";
 
@@ -26,7 +25,6 @@ import { ApiService } from "./apiservices.service";
 		ProductDetailsComponent,
 		CartComponent,
 		FilterComponent,
-		OrdersComponent,
 		ProfileComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],

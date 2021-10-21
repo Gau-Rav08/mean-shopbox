@@ -182,3 +182,9 @@ h1 {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+.product-frame {
+	border: 1px solid #aaa;
+	width: 120px;
+	height: 180px;
+}
