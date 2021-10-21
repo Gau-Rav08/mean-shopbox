@@ -32,19 +32,19 @@ export class CartComponent implements OnInit {
 
 	addItem(id: string) {
 		this.forCartData.productId = id;
-		this.api.addProductToCart(this.forCartData);
+		this.api.addProductToCart(this.forCartData).subscribe();
 		this.router.navigate(["/cart"]);
 	}
 
 	removeItem(id: string) {
 		this.forCartData.productId = id;
-		this.api.removeProductFromCart(this.forCartData);
+		this.api.removeProductFromCart(this.forCartData).subscribe();
 		this.router.navigate(["/cart"]);
 	}
 
 	removeProd(id: string) {
 		this.forCartData.productId = id;
-		this.api.removeProductCart(this.forCartData);
+		this.api.removeProductCart(this.forCartData).subscribe();
 		this.router.navigate(["/cart"]);
 	}
 }
