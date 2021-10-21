@@ -51,7 +51,7 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0px 45px;
-	background-color: aqua;
+	background-color: #d5b583;
 }
 .app-h3 {
 	padding: 15px;
@@ -82,7 +82,7 @@ nav {
 .right-menu a:hover,
 .search-cancel:hover,
 .form-cancel:hover {
-	color: #0b9d8a;
+	color: #6d5550;
 	transition: all ease 0.3s;
 }
 
@@ -92,7 +92,14 @@ nav {
 
 .logout-btn {
 	padding: 6px 18px;
-	background-color: black;
+	background-color: #e9e9d5;
+	color: black !important;
+	border-radius: 8px;
+}
+
+.logout-btn:hover{
+	padding: 6px 18px;
+	background-color: #926e68;
 	color: white !important;
 	border-radius: 8px;
 }
