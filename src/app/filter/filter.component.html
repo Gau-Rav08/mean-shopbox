@@ -1,79 +1,128 @@
 <div class="container1">
 	<div class="box1">
-		<h1>Filters</h1>
-		<hr />
-		<div class="price-range">
-			<h4>Price Range</h4>
-			<div class="label">
-				<label>
-					<input type="checkbox" name="range" />Rs 10,000 - Rs 30,000
-				</label>
-				<label>
-					<input type="checkbox" name="range" />Rs 30,000 - Rs 50,000
-				</label>
-				<label>
-					<input type="checkbox" name="range" />Rs 50,000 - Rs 80,000
-				</label>
-				<label>
-					<input type="checkbox" name="range" />Rs 80,000 and Above
-				</label>
+		<form #filter="ngForm" (click)="filterQ(filter.value)">
+			<h1>Filters</h1>
+			<hr />
+			<div class="price-range">
+				<h4>Price Range</h4>
+				<div class="label">
+					<label>
+						<input
+							type="radio"
+							name="price"
+							value="$gt : 10000, $lt : 30000"
+							ngModel
+							(click)="filterQ(filter.value)"
+						/>Rs 10,000 - Rs 30,000
+					</label>
+					<label>
+						<input
+							type="radio"
+							name="price"
+							value="$gt : 30000, $lt : 50000"
+							ngModel
+							(click)="filterQ(filter.value)"
+						/>Rs 30,000 - Rs 50,000
+					</label>
+					<label>
+						<input
+							type="radio"
+							name="price"
+							value="$gt : 50000, $lt : 80000"
+							ngModel
+							(click)="filterQ(filter.value)"
+						/>Rs 50,000 - Rs 80,000
+					</label>
+					<label>
+						<input
+							type="radio"
+							name="price"
+							value="$gt : 80000"
+							ngModel
+							(click)="filterQ(filter.value)"
+						/>Rs 80,000 and Above
+					</label>
+				</div>
 			</div>
-		</div>
-		<hr />
-		<div class="brand-filter">
-			<h4>Brand</h4>
-			<div class="label">
-				<label> <input type="checkbox" name="brand" />Apple </label>
-				<label> <input type="checkbox" name="brand" />Samsung </label>
-				<label> <input type="checkbox" name="brand" />OnePlus </label>
+			<hr />
+			<div class="brand-filter">
+				<h4>Brand</h4>
+				<div class="label">
+					<label>
+						<input
+							type="checkbox"
+							name="Apple"
+							ngModel
+							(click)="filterQ(filter.value)"
+						/>Apple
+					</label>
+					<label>
+						<input
+							type="checkbox"
+							name="Realme"
+							ngModel
+							(click)="filterQ(filter.value)"
+						/>Realme
+					</label>
+					<label>
+						<input
+							type="checkbox"
+							name="Samsung"
+							ngModel
+							(click)="filterQ(filter.value)"
+						/>Samsung
+					</label>
+				</div>
 			</div>
-		</div>
-		<hr />
-		<div class="storage">
-			<h4>Storage</h4>
-			<div class="label">
-				<label> <input type="checkbox" name="storage" />256 GB & above </label>
-				<label> <input type="checkbox" name="storage" />128 -256 GB </label>
-				<label> <input type="checkbox" name="storage" />64 - 128 GB </label>
-				<label> <input type="checkbox" name="storage" />32 - 64 GB </label>
-				<label> <input type="checkbox" name="storage" />16 - 32 GB </label>
+			<hr />
+			<div class="storage">
+				<h4>Storage</h4>
+				<div class="label">
+					<label>
+						<input type="checkbox" name="storage" />256 GB & above
+					</label>
+					<label> <input type="checkbox" name="storage" />128 -256 GB </label>
+					<label> <input type="checkbox" name="storage" />64 - 128 GB </label>
+					<label> <input type="checkbox" name="storage" />32 - 64 GB </label>
+					<label> <input type="checkbox" name="storage" />16 - 32 GB </label>
+				</div>
 			</div>
-		</div>
-		<hr />
-		<div class="ram">
-			<h4>RAM</h4>
-			<div class="label">
-				<label> <input type="checkbox" name="RAM" />6 GB & above </label>
-				<label> <input type="checkbox" name="RAM" />4 GB </label>
-				<label> <input type="checkbox" name="RAM" />3 GB </label>
-				<label> <input type="checkbox" name="RAM" />2 GB </label>
-				<label> <input type="checkbox" name="RAM" />Less than 2 GB </label>
+			<hr />
+			<div class="ram">
+				<h4>RAM</h4>
+				<div class="label">
+					<label> <input type="checkbox" name="RAM" />6 GB & above </label>
+					<label> <input type="checkbox" name="RAM" />4 GB </label>
+					<label> <input type="checkbox" name="RAM" />3 GB </label>
+					<label> <input type="checkbox" name="RAM" />2 GB </label>
+					<label> <input type="checkbox" name="RAM" />Less than 2 GB </label>
+				</div>
 			</div>
-		</div>
-		<hr />
-		<div class="battery">
-			<h4>Battery</h4>
-			<div class="label">
-				<label>
-					<input type="checkbox" name="Battery" />5000 mAh & Above
-				</label>
-				<label>
-					<input type="checkbox" name="Battery" />4000 mAh - 5000 mAh
-				</label>
-				<label>
-					<input type="checkbox" name="Battery" />3000 mAh - 4000 mAh
-				</label>
-				<label>
-					<input type="checkbox" name="Battery" />2000 mAh - 3000 mAh
-				</label>
-				<label>
-					<input type="checkbox" name="Battery" />1000 mAh - 2000 mAh
-				</label>
-				<label>
-					<input type="checkbox" name="Battery" />Less than 1000mAh
-				</label>
+			<hr />
+			<div class="battery">
+				<h4>Battery</h4>
+				<div class="label">
+					<label>
+						<input type="checkbox" name="Battery" />5000 mAh & Above
+					</label>
+					<label>
+						<input type="checkbox" name="Battery" />4000 mAh - 5000 mAh
+					</label>
+					<label>
+						<input type="checkbox" name="Battery" />3000 mAh - 4000 mAh
+					</label>
+					<label>
+						<input type="checkbox" name="Battery" />2000 mAh - 3000 mAh
+					</label>
+					<label>
+						<input type="checkbox" name="Battery" />1000 mAh - 2000 mAh
+					</label>
+					<label>
+						<input type="checkbox" name="Battery" />Less than 1000mAh
+					</label>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 
 	<div class="box2">

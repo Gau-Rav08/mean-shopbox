@@ -28,6 +28,10 @@ export class ApiService {
 		}
 	}
 
+	getUser(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/userData", data);
+	}
+
 	loginUser(data: any): Observable<any> {
 		return this._http.post(this.apiurl + "/login", data);
 	}

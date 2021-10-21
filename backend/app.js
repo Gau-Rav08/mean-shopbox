@@ -26,6 +26,8 @@ app.post("/api/signup", (req, res) => {
 		name: req.body.name,
 		email: req.body.email,
 		password: req.body.password,
+		phone: "",
+		address: "",
 	});
 	userModel.findOne({ email: req.body.email }, (err, existingUser) => {
 		if (existingUser) {
@@ -49,6 +51,12 @@ app.post("/api/login", async (req, res) => {
 	} else {
 		res.json({ success: false, message: "Incorrect Email or Password." });
 	}
+});
+
+app.post("/api/userData", async (req, res) => {
+	let userId = req.body.userId;
+	let user = await userModel.findById(userId);
+	res.json(user);
 });
 
 app.post("/api/product", async (req, res) => {

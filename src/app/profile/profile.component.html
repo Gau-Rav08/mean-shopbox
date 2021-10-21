@@ -2,43 +2,69 @@
 	rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 />
-  <div class="container">      
-      <div class="profileimg">
-        <img src="../../assets/profile1.jpg" alt="Avatar">
-      </div>
-      <div class="personalinfo">
-          
-        <div class="data">        
-            <label for="name"><b>First name </b></label> 
-            <a href="#" class="button">Edit</a>
-        </div>         
-            <input type="text" value="Parth Prajapati" name="name" id="name"><br><br>
-            
-            <div class="data">
-            <label for="address"><b>Address </b></label>
-            <a href="#" class="button">Edit</a>
-            </div>
+<div class="container">
+	<div class="profileimg">
+		<img src="../../assets/profile1.jpg" alt="Avatar" />
+	</div>
+	<div class="personalinfo">
+		<div class="data">
+			<label for="name"><b>Name </b></label>
+		</div>
+		<input
+			type="text"
+			value="{{ user.name }}"
+			name="name"
+			id="name"
+			disabled
+		/><br /><br />
 
-            <input type="text" value="Borivali, Mumbai, Maharashtra" name="address" id="address"><br><br>
-            
-            <div class="data">
-            <label for="mobileno"><b>Mobile No. </b></label>
-            <a href="#" class="button">Edit</a>
-            </div>
+		<div class="data">
+			<label for="address"><b>Address </b></label>
+		</div>
 
-            <input type="number" value="3579512486" name="mobileno" id="mobileno" disabled><br><br>
-            
-            <div class="data">
-            <label for="password"><b>Password </b></label>
-            <a href="#" class="button">Edit</a>
-            </div>
-            <input type="password" name="password" value="psw" name="password" id="password" disabled><br><br>
-            
-            <div class="data">
-            <label for="email"><b>E-mail </b></label>
-            <a href="#" class="button">Edit  </a>
-            </div>
-            
-            <input type="email" value="parth@gmail.com" name="email" id="email">         
-      </div>
-  </div>
+		<input
+			type="text"
+			value="{{ user.address }}"
+			name="address"
+			id="address"
+			disabled
+		/><br /><br />
+
+		<div class="data">
+			<label for="mobileno"><b>Mobile No. </b></label>
+		</div>
+
+		<input
+			type="number"
+			value="{{ user.phone }}"
+			name="mobileno"
+			id="mobileno"
+			disabled
+		/><br /><br />
+
+		<div class="data">
+			<label for="password"><b>Password </b></label>
+		</div>
+		<input
+			type="password"
+			name="password"
+			value="{{ user.password }}"
+			name="password"
+			id="password"
+			disabled
+		/><br /><br />
+
+		<div class="data">
+			<label for="email"><b>E-mail </b></label>
+			<a href="#" class="button">Edit </a>
+		</div>
+
+		<input
+			type="email"
+			value="{{ user.email }}"
+			name="email"
+			id="email"
+			disabled
+		/>
+	</div>
+</div>

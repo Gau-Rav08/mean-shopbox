@@ -40,4 +40,11 @@ export class FilterComponent implements OnInit {
 			alert("You need to be logged in.");
 		}
 	}
+
+	filterQ(filter: any) {
+		console.log(filter);
+		// this.api.getFilterProduct(this.search).subscribe((res) => {
+		// 	this.products = res;
+		// });
+	}
 }
