@@ -1,76 +1,80 @@
 * {
 	font-family: sans-serif;
-    
 }
-    
-.container{
-    border-radius: 25px;
-    border: 1px solid #7895ae;
-    padding: 20px; 
-    margin: 40px auto;
-    background-color: whitesmoke;
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;    
+
+.container {
+	border-radius: 25px;
+	border: 1px solid #7895ae;
+	padding: 20px;
+	margin: 40px auto;
+	background-color: whitesmoke;
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 img {
-    border: 1px solid #7895ae;
-    border-radius: 50%;        
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+	border: 1px solid #7895ae;
+	border-radius: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
 }
 
-.personalinfo{    
-    
-    margin: 10px;
-    margin-top: 20px;    
-    width: 50%;
+.personalinfo {
+	margin: 10px;
+	margin-top: 20px;
+	width: 50%;
 }
 
 input:enabled {
-    background: #fcfcfc;
-    padding: 10px;
-    border: 1px solid #7895ae;
-    width: 100%;
-    margin-top: 7px;
+	background: #fcfcfc;
+	padding: 10px;
+	border: 1px solid #7895ae;
+	width: 100%;
+	margin-top: 7px;
 }
-  
+
 input:disabled {
-    background: lightgrey;
-    border: none;
-    padding: 10px;
-    border: 1px solid #7895ae;
-    width: 100%;
-    margin-top: 7px;
+	background: lightgrey;
+	border: none;
+	padding: 10px;
+	border: 1px solid #7895ae;
+	width: 100%;
+	margin-top: 7px;
 }
 
-label{
-    display: flex;    
-    
-    width: 50%;
+label {
+	display: flex;
+
+	width: 50%;
 }
 
-
-.data{
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;  
+.data {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
 }
 
-.button {     
-     border: none;
-     color: #4e7291;    
-     text-decoration: none;
-     display: flex;     
-     font-size: 14px;     
-     cursor: pointer;    
-     width: 50%;      
-     justify-content: flex-end;
-   }
+.button {
+	border: none;
+	color: #4e7291;
+	text-decoration: none;
+	display: flex;
+	font-size: 14px;
+	cursor: pointer;
+	width: 50%;
+	justify-content: flex-end;
+}
+
+button {
+	font-weight: bold;
+	padding: 8px 12px;
+	margin-top: 15px;
+	background-color: #d5b583;
+	border-radius: 5px;
+}

@@ -6,7 +6,7 @@
 	<div class="profileimg">
 		<img src="../../assets/profile1.jpg" alt="Avatar" />
 	</div>
-	<div class="personalinfo">
+	<div *ngIf="!edit" class="personalinfo">
 		<div class="data">
 			<label for="name"><b>Name </b></label>
 		</div>
@@ -56,7 +56,6 @@
 
 		<div class="data">
 			<label for="email"><b>E-mail </b></label>
-			<a href="#" class="button">Edit </a>
 		</div>
 
 		<input
@@ -66,5 +65,68 @@
 			id="email"
 			disabled
 		/>
+		<button (click)="onEdit()">Edit</button>
+	</div>
+	<div *ngIf="edit" class="personalinfo">
+		<form #profile="ngForm" ngNativeValidate (submit)="onSave()">
+			<div class="data">
+				<label for="name"><b>Name </b></label>
+			</div>
+			<input
+				type="text"
+				name="name"
+				placeholder="Name"
+				required
+				min-length="4"
+				[(ngModel)]="user.name"
+			/><br /><br />
+
+			<div class="data">
+				<label for="address"><b>Address </b></label>
+			</div>
+
+			<input
+				type="text"
+				name="address"
+				placeholder="Address"
+				[(ngModel)]="user.address"
+			/><br /><br />
+
+			<div class="data">
+				<label for="mobileno"><b>Mobile No. </b></label>
+			</div>
+
+			<input
+				type="text"
+				name="mobileno"
+				placeholder="Mobile No"
+				[(ngModel)]="user.phone"
+			/><br /><br />
+
+			<div class="data">
+				<label for="password"><b>Password </b></label>
+			</div>
+			<input
+				type="password"
+				name="password"
+				placeholder="Password"
+				required
+				minlength="8"
+				[(ngModel)]="user.name"
+			/><br /><br />
+
+			<div class="data">
+				<label for="email"><b>E-mail </b></label>
+			</div>
+
+			<input
+				type="email"
+				name="email"
+				placeholder="Email"
+				[(ngModel)]="user.email"
+				required
+			/>
+			<button type="submit">Save</button>
+		</form>
 	</div>
 </div>

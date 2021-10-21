@@ -32,6 +32,10 @@ export class ApiService {
 		return this._http.post(this.apiurl + "/userData", data);
 	}
 
+	saveUser(data: any): Observable<any> {
+		return this._http.post(this.apiurl + "/userSave", data);
+	}
+
 	loginUser(data: any): Observable<any> {
 		return this._http.post(this.apiurl + "/login", data);
 	}

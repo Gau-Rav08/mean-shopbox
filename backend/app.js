@@ -59,6 +59,23 @@ app.post("/api/userData", async (req, res) => {
 	res.json(user);
 });
 
+app.post("/api/userSave", async (req, res) => {
+	let name = req.body.name;
+	let email = req.body.email;
+	let password = req.body.password;
+	let phone = req.body.phone;
+	let address = req.body.address;
+	let userId = req.body.userId;
+	await userModel.findByIdAndUpdate(userId, {
+		name: name,
+		email: email,
+		phone: phone,
+		password: password,
+		address: address,
+	});
+	res.json(user);
+});
+
 app.post("/api/product", async (req, res) => {
 	try {
 		let productId = req.body.productId;

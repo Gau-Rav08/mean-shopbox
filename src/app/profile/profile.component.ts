@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
 		password: "",
 		address: "",
 	};
+
+	edit = false;
 	constructor(private api: ApiService) {}
 
 	ngOnInit(): void {
@@ -26,5 +28,16 @@ export class ProfileComponent implements OnInit {
 			this.user.password = res.password;
 			this.user.address = res.address;
 		});
+	}
+
+	onEdit() {
+		this.edit = true;
+	}
+	onSave() {
+		this.api.saveUser(this.user).subscribe();
+		this.edit = false;
+		sessionStorage.setItem("name", this.user.name);
+		sessionStorage.setItem("email", this.user.email);
+		sessionStorage.setItem("pass", this.user.password);
 	}
 }
