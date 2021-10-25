@@ -263,15 +263,5 @@ app.post("/api/filter", async (req, res) => {
 	}
 });
 
-// app.get("/polls", async (req, res) => {
-// 	let data = await poll
-// 		.find(
-// 			{ district: req.query.district, ac: req.query.ac },
-// 			{ _id: 0, poll_stat: 1 }
-// 		)
-// 		.limit()
-// 		.sort({ poll_stat: 1 });
-// 	res.send(data);
-// });
 
 app.listen(3000);
