@@ -208,7 +208,9 @@ li {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
+.product-details h1 {
+	text-align: center;
+}
 input {
 	background-color: #ccc;
 	border: 1px solid #aaa;
